@@ -1,4 +1,4 @@
-R20Emu = (function () {
+R20Emu = function () {
     var r20Objs = {};
 
     function out(caller, message) {
@@ -12,4 +12,6 @@ R20Emu = (function () {
         if (r20Objs[id] && r20Objs[id].type == type) return r20Objs[id];
     }
 
-})(this);
+};
+
+log = R20Emu.log
