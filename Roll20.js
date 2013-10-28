@@ -1,4 +1,6 @@
 var Roll20 = Roll20 || (function(context){
+    context.state = {};
+
     function out(opts){
         console.log('[R20:' + opts.caller + '] ' + opts.msg);
     }
@@ -24,12 +26,23 @@ var Roll20 = Roll20 || (function(context){
              
         });
     }
+   
+    context.randomInteger = function (max){
+     return Math.floor(Math.random() * max) + 1
+    }
+
+    context.Campaign = function() {
+      return Roll20.objstore[campaign]
+    }
     
-    
+    context.state = {};
+
     return({});
 })(this);
-                
+var R20 = Roll20;
+
 Roll20.objstore = {};
+
 
 Roll20.Object = function (type, attributes){
     attributes = attributes || {};
@@ -42,7 +55,12 @@ Roll20.Object = function (type, attributes){
     Roll20.objstore[this._type][this._id] = this;
 }
 Roll20.Object.index={};
-Roll20.Object.prototype._id = (function (){return this._id || Util.guid()})();
+Roll20.Object.prototype._id = (function (){return this._id || _.uniqueId()})();
 Roll20.Object.prototype.get = function (attr){
      return this._attributes[attr];
 }
+Roll20.Object.prototype.set = function (attr, value){
+  this._attributes[attr] = value;
+}
+
+Roll20.objstore.campaign = new Roll20.Object;
