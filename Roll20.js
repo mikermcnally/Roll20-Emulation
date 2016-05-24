@@ -38,7 +38,8 @@ var Roll20 = Roll20 || (function(context){
     context.state = {};
 
     function out(opts){
-        console.log('[R20:' + opts.caller + '] ' + opts.msg);
+        console.log('[R20:' + opts.caller + ']:');
+        console.log(opts.msg);
     }
     
     context.log = function (msg){
@@ -59,7 +60,7 @@ var Roll20 = Roll20 || (function(context){
     
     context.findObj = function (opts){
         return _.filter(Roll20.objstore, function(obj){
-            return _.isMatch(obj._attributes, opts);
+            return _.isMatch(obj, opts);
         });
     }
    
@@ -81,24 +82,17 @@ Roll20.objstore = {};
 
 Roll20.Object = function (type, attributes){
     var id = generateRowID(); 
-    attributes = attributes || {};
-    attributes._type = type;
-    attributes._id = id;
     this._type = type;
-    this._attributes = attributes;
     this.id = id;
-    this._id = id;
+    _.extend(this, attributes);
 
-    Roll20.objstore[this.id] = Roll20.objstore[this.id] || {};
-    Roll20.objstore[this.id] = this;
+    Roll20.objstore[id] = this;
 }
-Roll20.Object.index={};
-Roll20.Object.prototype._id = (function (){return this._id || generateRowID()})();
 Roll20.Object.prototype.get = function (attr){
-     return this._attributes[attr];
+     return this[attr];
 }
 Roll20.Object.prototype.set = function (attr, value){
-  this._attributes[attr] = value;
+  this[attr] = value;
 }
 
 Roll20.objstore.campaign = new Roll20.Object;
