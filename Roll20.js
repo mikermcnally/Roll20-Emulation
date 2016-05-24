@@ -54,7 +54,7 @@ var Roll20 = Roll20 || (function(context){
     }
     
     context.getObj = function (type, id){
-        return(Roll20.objstore[type][id]);
+        return(Roll20.objstore[id]);
     }
     
     context.findObj = function (opts){
@@ -87,7 +87,8 @@ Roll20.Object = function (type, attributes){
     this._type = type;
     this._attributes = attributes;
     this.id = id;
-    
+    this._id = id;
+
     Roll20.objstore[this.id] = Roll20.objstore[this.id] || {};
     Roll20.objstore[this.id] = this;
 }
