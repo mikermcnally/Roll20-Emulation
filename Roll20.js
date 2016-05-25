@@ -84,7 +84,11 @@ Roll20.Object = function (type, attributes){
     var id = generateRowID(); 
     this._type = type;
     this.id = id;
+    this._id = id;
     _.extend(this, attributes);
+    if(_.has(attributes, "characterid")){
+        this._characterid = attributes.characterid;
+    }
 
     Roll20.objstore[id] = this;
 }
