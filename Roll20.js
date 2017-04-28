@@ -113,6 +113,9 @@ Roll20.Object = function(type, attributes) {
   }
 
   Roll20.objstore[id] = this;
+  this.remove = function () {
+    delete Roll20.objstore[this.id];
+  }
 }
 Roll20.Object.prototype.get = function(attr) {
   return this[attr];
