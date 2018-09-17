@@ -1,0 +1,22 @@
+{
+  "name": "roll20-emulation",
+  "version": "0.1.0",
+  "description": "Package to aid automated testing of Roll20 scripts",
+  "main": "r20",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikermcnally/Roll20-Emulation.git"
+  },
+  "keywords": [
+    "roll20"
+  ],
+  "author": "Mike McNally",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikermcnally/Roll20-Emulation/issues"
+  },
+  "homepage": "https://github.com/mikermcnally/Roll20-Emulation#readme"
+}
