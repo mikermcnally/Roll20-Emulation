@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/mikermcnally/Roll20-Emulation/issues"
   },
-  "homepage": "https://github.com/mikermcnally/Roll20-Emulation#readme"
+  "homepage": "https://github.com/mikermcnally/Roll20-Emulation#readme",
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
 }
